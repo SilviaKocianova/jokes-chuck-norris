@@ -12,7 +12,7 @@ const CategorySelector = () => {
   const dispatch = useDispatch();
 
   return (
-    <Select onChange={(e) => dispatch(fetchJokeByCategory(e.target.value))}>
+    <Select class="category-selector" onChange={(e) => dispatch(fetchJokeByCategory(e.target.value))}>
       {categories.map((cat) => (
         <MenuItem key={cat} value={cat}>{cat}</MenuItem>
       ))}

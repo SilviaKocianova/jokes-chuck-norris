@@ -5,3 +5,12 @@
   font-weight: 600;
 }
 
+h4 {
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 50px;
+}
+
+.category-selector {
+    
+}

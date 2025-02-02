@@ -8,6 +8,7 @@ import Button from "../components/atoms/Button";
 import { Container, Typography } from "@mui/material";
 
 import "../styles/Buttons.css"
+import "../styles/General.css"
 
 
 const Home = () => {
@@ -21,7 +22,15 @@ const Home = () => {
   return (
     <MainLayout>
       <Container>
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography
+            variant="h4"
+            align="center"
+            gutterBottom
+            sx={{
+                color: "white",
+                fontWeight: "bold",
+            }}
+            >
           Chuck Norris Metaverse
         </Typography>
         <CategorySelector />
