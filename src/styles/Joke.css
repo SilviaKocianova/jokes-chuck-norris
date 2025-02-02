@@ -1,0 +1,13 @@
+.joke-card {
+    color: white;
+    background-color: black;
+    padding: 50px;
+    border-radius: 10px;
+    width: 30em;
+    
+}
+
+.joke-canvas {
+    width: 100%;
+    height: 500px;
+}

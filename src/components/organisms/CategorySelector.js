@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { fetchJokeByCategory } from "../../features/jokeSlice";
 import { MenuItem, Select } from "@mui/material";
 
+import "../../styles/General.css";
+
+
 const categories = ["animal", "career", "celebrity", "dev"];
 
 const CategorySelector = () => {

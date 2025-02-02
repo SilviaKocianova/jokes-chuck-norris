@@ -7,6 +7,9 @@ import MainLayout from "../components/templates/MainLayout";
 import Button from "../components/atoms/Button";
 import { Container, Typography } from "@mui/material";
 
+import "../styles/Buttons.css"
+
+
 const Home = () => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.jokes.status);
@@ -23,9 +26,11 @@ const Home = () => {
         </Typography>
         <CategorySelector />
         <JokeDisplay />
-        <Button onClick={() => dispatch(fetchRandomJoke())} disabled={status === "loading"}>
+        <div class="button-container">
+        <Button class="next-joke-button" onClick={() => dispatch(fetchRandomJoke())} disabled={status === "loading"}>
           Další vtip
         </Button>
+        </div>
       </Container>
     </MainLayout>
   );

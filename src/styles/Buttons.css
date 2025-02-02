@@ -1,0 +1,19 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.read-joke {
+    background-color: pink;
+    margin: 2rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.next-joke-button {
+    background-color: pink;
+    margin: 2rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+}

@@ -1,9 +1,13 @@
 import React from "react";
 import { Button as MuiButton } from "@mui/material";
 
+import "../../styles/General.css";
+import "../../styles/Buttons.css"
+
+
 const Button = ({ children, onClick, disabled }) => {
   return (
-    <MuiButton variant="contained" color="primary" onClick={onClick} disabled={disabled}>
+    <MuiButton class="next-joke-button" onClick={onClick} disabled={disabled}>
       {children}
     </MuiButton>
   );
