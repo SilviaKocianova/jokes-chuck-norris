@@ -1,8 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import jokeReducer from "../features/jokeSlice";
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
+const store = configureStore({
+  reducer: { jokes: jokeReducer },
 });
+
+export { store };
+export default store;
