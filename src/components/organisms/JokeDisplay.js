@@ -7,37 +7,47 @@ import { Button } from "@mui/material";
 
 import "../../styles/General.css";
 import "../../styles/Buttons.css";
-import "../../styles/Joke.css"
+import "../../styles/Joke.css";
 
 function TalkingHead({ isSpeaking }) {
   const meshRef = useRef();
   const mouthRef = useRef();
-  const texture = useLoader(TextureLoader, "/chuck_face.png"); // Použijeme texturu Chuckovy tváře
+  
+  const texture = useLoader(TextureLoader, "/chuck_face.png");
+  const mouthTexture = useLoader(TextureLoader, "/chuck_face_mouth.png");
 
   useFrame(() => {
-    if (isSpeaking && mouthRef.current) {
-      mouthRef.current.scale.y = 0.5 + Math.sin(Date.now() * 0.01) * 0.3; // Simulace otevírání pusy
-    } else if (mouthRef.current) {
-      mouthRef.current.scale.y = 0.1; // Zavřená pusa
+    if (meshRef.current) {
+      meshRef.current.rotation.y += 0.00; // Rotace kolem osy Y
+    }
+
+    if (mouthRef.current) {
+      if (isSpeaking) {
+        mouthRef.current.scale.y = 0.3 + Math.abs(Math.sin(Date.now() * 0.02)) * 0.5; // Animace pusy
+      } else {
+        mouthRef.current.scale.y = 0.5; // Zavřená pusa
+      }
     }
   });
 
   return (
     <group ref={meshRef} position={[0, 1, 0]}>
-      {}
+      {/* Hlava */}
       <mesh>
         <sphereGeometry args={[2, 32, 32]} />
         <meshStandardMaterial map={texture} />
       </mesh>
 
-      {/* Ústa */}
-      <mesh ref={mouthRef} position={[0, -0.5, 0.9]}>
-        <cylinderGeometry args={[0.2, 0.2, 0.05, 32]} />
-        <meshStandardMaterial color="black" />
+      {/* Pusa s texturou */}
+      <mesh ref={mouthRef} position={[0.9, -1.5, 0.2]}>
+        <cylinderGeometry args={[0.8, 0.4, 0.5, 32]} />
+        <meshStandardMaterial map={mouthTexture} transparent={true} />
       </mesh>
     </group>
   );
 }
+
+
 
 const JokeDisplay = () => {
   const joke = useSelector((state) => state.jokes.joke);
@@ -62,7 +72,7 @@ const JokeDisplay = () => {
     if (voices.length === 0) return;
 
     const utterance = new SpeechSynthesisUtterance(joke.value);
-    utterance.voice = voices.find((v) => v.lang === "en-US") || voices[0];
+    utterance.voice = voices.find((v) => v.name === "Google UK English Name") || voices[0];
 
     // Když začne mluvit
     utterance.onstart = () => setIsSpeaking(true);
@@ -75,25 +85,23 @@ const JokeDisplay = () => {
   };
 
   return (
-    <div class="joke-canvas">
+    <div className="joke-canvas">
       <Canvas>
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.8} />
         <pointLight position={[5, 5, 5]} />
         <TalkingHead isSpeaking={isSpeaking} />
         {joke && (
-          <Html position={[0, 2, 0]}>
-            <div class="joke-card">
-              {joke.value}
-            </div>
+          <Html position={[-3.5, -1.5, 0]}>
+            <div className="joke-card">{joke.value}</div>
           </Html>
         )}
       </Canvas>
 
       {joke && (
-        <div class="button-container">
-        <Button class="read-joke" onClick={speakJoke}>
-          📢 Přečíst vtip
-        </Button>
+        <div className="button-container">
+          <Button className="read-joke" onClick={speakJoke}>
+            📢 Přečíst vtip
+          </Button>
         </div>
       )}
     </div>
