@@ -1,9 +1,10 @@
+// JokeDisplay.js
 import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import { Html } from "@react-three/drei";
 import { useSelector } from "react-redux";
-import { Button } from "@mui/material";
+import Button from "../atoms/Button";
 
 import "../../styles/General.css";
 import "../../styles/Buttons.css";
@@ -18,6 +19,7 @@ function TalkingHead({ isSpeaking }) {
 
   useFrame(() => {
     if (meshRef.current) {
+      meshRef.current.rotation.y = Math.PI / -2.5;
       meshRef.current.rotation.y += 0.00; // Rotace kolem osy Y
     }
 
@@ -38,7 +40,7 @@ function TalkingHead({ isSpeaking }) {
         <meshStandardMaterial map={texture} />
       </mesh>
 
-      {/* Pusa s texturou */}
+      {/* Pusa*/}
       <mesh ref={mouthRef} position={[0.9, -1.5, 0.2]}>
         <cylinderGeometry args={[0.8, 0.4, 0.5, 32]} />
         <meshStandardMaterial map={mouthTexture} transparent={true} />
@@ -46,8 +48,6 @@ function TalkingHead({ isSpeaking }) {
     </group>
   );
 }
-
-
 
 const JokeDisplay = () => {
   const joke = useSelector((state) => state.jokes.joke);
@@ -98,11 +98,9 @@ const JokeDisplay = () => {
       </Canvas>
 
       {joke && (
-        <div className="button-container">
-          <Button className="read-joke" onClick={speakJoke}>
-            📢 Přečíst vtip
-          </Button>
-        </div>
+        <Button onClick={speakJoke}>
+          📢 Read Joke
+        </Button>
       )}
     </div>
   );

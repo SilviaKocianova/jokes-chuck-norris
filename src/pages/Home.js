@@ -1,3 +1,5 @@
+// Home.js
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRandomJoke } from "../features/jokeSlice";
@@ -5,11 +7,10 @@ import JokeDisplay from "../components/organisms/JokeDisplay";
 import CategorySelector from "../components/organisms/CategorySelector";
 import MainLayout from "../components/templates/MainLayout";
 import Button from "../components/atoms/Button";
-import { Container, Typography } from "@mui/material";
+import Header from "../components/atoms/Header";
+import { Grid } from "@mui/material";
 
-import "../styles/Buttons.css"
-import "../styles/General.css"
-
+import ReadJokeButton from "../features/ReadJokeButton";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -21,26 +22,19 @@ const Home = () => {
 
   return (
     <MainLayout>
-      <Container>
-        <Typography
-            variant="h4"
-            align="center"
-            gutterBottom
-            sx={{
-                color: "white",
-                fontWeight: "bold",
-            }}
-            >
-          Chuck Norris Metaverse
-        </Typography>
-        <CategorySelector />
-        <JokeDisplay />
-        <div class="button-container">
-        <Button class="next-joke-button" onClick={() => dispatch(fetchRandomJoke())} disabled={status === "loading"}>
-          Další vtip
-        </Button>
-        </div>
-      </Container>
+      <Header />
+      <CategorySelector />
+      <JokeDisplay />
+      <Grid container justifyContent="center" spacing={2}>
+        <Grid item>
+          <Button onClick={() => dispatch(fetchRandomJoke())} disabled={status === "loading"}>
+            Další vtip
+          </Button>
+        </Grid>
+        <Grid item>
+          <ReadJokeButton />
+        </Grid>
+      </Grid>
     </MainLayout>
   );
 };
