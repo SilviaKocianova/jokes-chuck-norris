@@ -17,7 +17,7 @@
 - SpeechSynthesis API: To read jokes out loud for users.
 - Chuck Norris API: API for fetching jokes in different categories and by search query.
 
-    Folder Structure
+    ### Folder Structure
 
     /src
     Contains the main source code for the app.
