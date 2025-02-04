@@ -29,7 +29,7 @@ const Home = () => {
       <Grid container justifyContent="center" spacing={2} sx={{ marginTop: 2 }}>
         <Grid item>
           <Button onClick={() => dispatch(fetchRandomJoke())} disabled={status === "loading"}>
-            Další vtip
+            Next Joke
           </Button>
         </Grid>
         <Grid item>

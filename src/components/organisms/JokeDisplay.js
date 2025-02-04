@@ -3,7 +3,6 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import { Html } from "@react-three/drei";
 import { useSelector } from "react-redux";
-import Button from "../atoms/Button";
 
 import "../../styles/General.css";
 import "../../styles/Joke.css";
@@ -18,7 +17,7 @@ function TalkingHead({ isSpeaking }) {
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y = Math.PI / -2.5;
-      meshRef.current.rotation.y += 0.00; // Rotace kolem osy Y
+      meshRef.current.rotation.y += 0.00;
     }
 
     if (mouthRef.current) {
