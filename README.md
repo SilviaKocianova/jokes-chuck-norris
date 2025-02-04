@@ -1,21 +1,21 @@
 # Chuckles with Chuck
 
-## Features
+## Features    
+- Random Joke: Displays a random Chuck Norris joke when the page loads.
+- Next Joke: Allows users to get a new random joke by clicking a button.
+- Category Selector: Users can choose jokes from different categories (e.g., programming, animals, etc.).
+- Search by Keyword: Users can search for jokes containing specific keywords (must type at least 3 characters to search).
+- Speech Synthesis: The app can read the joke out loud using speech synthesis.
 
-    - Random Joke: Displays a random Chuck Norris joke when the page loads.
-    - Next Joke: Allows users to get a new random joke by clicking a button.
-    - Category Selector: Users can choose jokes from different categories (e.g., programming, animals, etc.).
-    - Search by Keyword: Users can search for jokes containing specific keywords (must type at least 3 characters to search).
-    - Speech Synthesis: The app can read the joke out loud using speech synthesis.
 
 ## Technologies Used
 
-    - React
-    - Redux Toolkit: State management for handling jokes and API interactions.
-    - React Three Fiber & Drei: For rendering Chuck Norris' talking head with animations.
-    - Material-UI: For UI components such as buttons, text fields, and grids.
-    - SpeechSynthesis API: To read jokes out loud for users.
-    - Chuck Norris API: API for fetching jokes in different categories and by search query.
+- React
+- Redux Toolkit: State management for handling jokes and API interactions.
+- React Three Fiber & Drei: For rendering Chuck Norris' talking head with animations.
+- Material-UI: For UI components such as buttons, text fields, and grids.
+- SpeechSynthesis API: To read jokes out loud for users.
+- Chuck Norris API: API for fetching jokes in different categories and by search query.
 
     Folder Structure
 
@@ -33,10 +33,11 @@
 
 ## Components
 
-    - Home.js: The main page that displays the random joke, category selector, and buttons for interacting with jokes.
-    - SearchBar.js: Allows users to search for jokes by a given keyword.
-    - CategorySelector.js: Dropdown for selecting jokes based on different categories.
-    - JokeDisplay.js: Displays the joke and Chuck Norris' animated head.
+- Home.js: The main page that displays the random joke, category selector, and buttons for interacting with jokes.
+- SearchBar.js: Allows users to search for jokes by a given keyword.
+- CategorySelector.js: Dropdown for selecting jokes based on different categories.
+- JokeDisplay.js: Displays the joke and Chuck Norris' animated head.
+
 
 ## API Endpoints Used
 
