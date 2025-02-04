@@ -1,4 +1,3 @@
-// JokeDisplay.js
 import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
@@ -7,7 +6,6 @@ import { useSelector } from "react-redux";
 import Button from "../atoms/Button";
 
 import "../../styles/General.css";
-import "../../styles/Buttons.css";
 import "../../styles/Joke.css";
 
 function TalkingHead({ isSpeaking }) {
@@ -40,7 +38,7 @@ function TalkingHead({ isSpeaking }) {
         <meshStandardMaterial map={texture} />
       </mesh>
 
-      {/* Pusa*/}
+      {/* Pusa */}
       <mesh ref={mouthRef} position={[0.9, -1.5, 0.2]}>
         <cylinderGeometry args={[0.8, 0.4, 0.5, 32]} />
         <meshStandardMaterial map={mouthTexture} transparent={true} />
@@ -49,10 +47,9 @@ function TalkingHead({ isSpeaking }) {
   );
 }
 
-const JokeDisplay = () => {
+const JokeDisplay = ({ isSpeaking, setIsSpeaking, setSpeakJoke }) => {
   const joke = useSelector((state) => state.jokes.joke);
   const [voices, setVoices] = useState([]);
-  const [isSpeaking, setIsSpeaking] = useState(false);
 
   useEffect(() => {
     const loadVoices = () => {
@@ -67,6 +64,10 @@ const JokeDisplay = () => {
     return () => speechSynthesis.removeEventListener("voiceschanged", loadVoices);
   }, []);
 
+  useEffect(() => {
+    setSpeakJoke(() => speakJoke);
+  }, [joke, voices]);
+
   const speakJoke = () => {
     if (!joke || !joke.value) return;
     if (voices.length === 0) return;
@@ -74,10 +75,7 @@ const JokeDisplay = () => {
     const utterance = new SpeechSynthesisUtterance(joke.value);
     utterance.voice = voices.find((v) => v.name === "Google UK English Name") || voices[0];
 
-    // Když začne mluvit
     utterance.onstart = () => setIsSpeaking(true);
-
-    // Když domluví
     utterance.onend = () => setIsSpeaking(false);
 
     window.speechSynthesis.cancel();
@@ -96,14 +94,9 @@ const JokeDisplay = () => {
           </Html>
         )}
       </Canvas>
-
-      {joke && (
-        <Button onClick={speakJoke}>
-          📢 Read Joke
-        </Button>
-      )}
     </div>
   );
 };
 
 export default JokeDisplay;
+
