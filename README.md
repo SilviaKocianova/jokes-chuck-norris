@@ -1,46 +1,46 @@
-# Getting Started with Create React App and Redux
+# Chuckles with Chuck
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Features
 
-## Available Scripts
+    - Random Joke: Displays a random Chuck Norris joke when the page loads.
+    - Next Joke: Allows users to get a new random joke by clicking a button.
+    - Category Selector: Users can choose jokes from different categories (e.g., programming, animals, etc.).
+    - Search by Keyword: Users can search for jokes containing specific keywords (must type at least 3 characters to search).
+    - Speech Synthesis: The app can read the joke out loud using speech synthesis.
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+    - React
+    - Redux Toolkit: State management for handling jokes and API interactions.
+    - React Three Fiber & Drei: For rendering Chuck Norris' talking head with animations.
+    - Material-UI: For UI components such as buttons, text fields, and grids.
+    - SpeechSynthesis API: To read jokes out loud for users.
+    - Chuck Norris API: API for fetching jokes in different categories and by search query.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    Folder Structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    /src
+    Contains the main source code for the app.
 
-### `npm test`
+    /components
+    Contains UI components such as buttons, headers, and search bars.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    /features
+    Contains Redux slices for handling the state of jokes.
 
-### `npm run build`
+    /styles
+    Contains global styles for the app.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    - Home.js: The main page that displays the random joke, category selector, and buttons for interacting with jokes.
+    - SearchBar.js: Allows users to search for jokes by a given keyword.
+    - CategorySelector.js: Dropdown for selecting jokes based on different categories.
+    - JokeDisplay.js: Displays the joke and Chuck Norris' animated head.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Endpoints Used
 
-### `npm run eject`
+    GET https://api.chucknorris.io/jokes/random: Fetches a random joke.
+    GET https://api.chucknorris.io/jokes/random?category={category}: Fetches a random joke from a specified category.
+    GET https://api.chucknorris.io/jokes/search?query={query}: Searches for jokes containing a specific keyword.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
