@@ -8,11 +8,12 @@ import CategorySelector from "../components/organisms/CategorySelector";
 import MainLayout from "../components/templates/MainLayout";
 import Button from "../components/atoms/Button";
 import Header from "../components/atoms/Header";
-
+import SearchBar from "../components/organisms/SearchBar"; // <-- Import SearchBar
 
 const Home = () => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.jokes.status);
+  const error = useSelector((state) => state.jokes.error); // Přidáno pro zobrazení chyby
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [speakJoke, setSpeakJoke] = useState(() => () => {});
 
@@ -24,6 +25,8 @@ const Home = () => {
     <MainLayout>
       <Header />
       <CategorySelector />
+      <SearchBar />
+      {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
       <JokeDisplay isSpeaking={isSpeaking} setIsSpeaking={setIsSpeaking} setSpeakJoke={setSpeakJoke} />
 
       <Grid container justifyContent="center" spacing={2} sx={{ marginTop: 2 }}>
